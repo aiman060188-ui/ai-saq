@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI-SAQ</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+header{
+    background:linear-gradient(135deg,#142337,#2867d8);
+    color:white;
+    padding:35px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:42px;
+    margin:10px;
+}
+
+header p{
+    font-size:18px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:25px;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.menu button{
+    padding:18px;
+    border:none;
+    border-radius:15px;
+    background:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 4px 15px #00000015;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:20px;
+    box-shadow:0 4px 15px #00000012;
+}
+
+textarea{
+    width:100%;
+    height:130px;
+    padding:15px;
+    border:2px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
+    box-sizing:border-box;
+}
+
+.btn{
+    background:#2867d8;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:12px;
+    margin-top:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:20px;
+    padding:20px;
+    border-radius:15px;
+}
+
+.danger{
+    background:#ffe8e8;
+    border:2px solid #e55;
+}
+
+.warning{
+    background:#fff5d9;
+    border:2px solid #e0ad30;
+}
+
+.safe{
+    background:#e4f7ed;
+    border:2px solid #32a66b;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+li{
+    margin:10px 0;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h1>🛡 AI-SAQ</h1>
+
+<p>
+Жалғанды таны — өзіңді қорға!
+</p>
+
+<p>
+AI дәуіріндегі цифрлық қауіпсіздік мектебі
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<div class="menu">
+
+<button onclick="showSection('check')">
+🔍 ТЕКСЕР
+</button>
+
+<button onclick="showSection('deepfake')">
+🎭 AI / DEEPFAKE
+</button>
+
+<button onclick="showSection('lesson')">
+🧠 AI-САБАҚ
+</button>
+
+<button onclick="showSection('parent')">
+👨‍👩‍👧 АТА-АНА
+</button>
+
+</div>
+
+
+
+<!-- ТЕКСЕР -->
+
+<div id="check" class="section active">
+
+<div class="card">
+
+<h2>🔍 Күмәнді хабарламаны тексеру</h2>
+
+<p>
+Күмәнді хабарламаны төменге енгізіңіз.
+</p>
+
+<textarea id="message"
+placeholder="Мысалы: Сіз 500 000 теңге ұттыңыз! Сілтемеге өтіп, картаңыздың мәліметін енгізіңіз.">
+</textarea>
+
+<br>
+
+<button class="btn" onclick="checkMessage()">
+ТЕКСЕРУ
+</button>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- DEEPFAKE -->
+
+<div id="deepfake" class="section">
+
+<div class="card">
+
+<h2>🎭 Deepfake деген не?</h2>
+
+<p>
+Deepfake — жасанды интеллект көмегімен
+адамның бейнесін, дауысын немесе қимылын
+жасанды түрде өзгерту немесе жасау.
+</p>
+
+<h3>Қалай сақтанамыз?</h3>
+
+<ul>
+
+<li>Ақпараттың бастапқы дереккөзін тексеріңіз.</li>
+
+<li>Басқа сенімді ақпарат көздерімен салыстырыңыз.</li>
+
+<li>Күмәнді видеоны бірден таратпаңыз.</li>
+
+<li>Ақша немесе құпия ақпарат сұралса,
+басқа арна арқылы қайта тексеріңіз.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+
+<!-- AI САБАҚ -->
+
+<div id="lesson" class="section">
+
+<div class="card">
+
+<h2>🧠 AI-САБАҚ</h2>
+
+<p>
+Сыныптасыңыздан:
+</p>
+
+<p>
+<b>
+«Маған қазір ақша жіберші.
+Жаңа нөмірдемін»
+</b>
+</p>
+
+<p>
+деген хабарлама келді.
+Не істейсіз?
+</p>
+
+<button class="btn"
+onclick="alert('Дұрыс! Алдымен сыныптасыңызға басқа арнамен қоңырау шалып тексеру керек.')">
+
+📞 Қоңырау шаламын
+
+</button>
+
+<br>
+
+<button class="btn"
+onclick="alert('Асықпаңыз! Алдымен хабарламаның рас екенін тексеру керек.')">
+
+💰 Ақша жіберемін
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- АТА АНА -->
+
+<div id="parent" class="section">
+
+<div class="card">
+
+<h2>👨‍👩‍👧 Ата-аналарға 5 ереже</h2>
+
+<ol>
+
+<li>
+Парольді ешкімге бермеңіз.
+</li>
+
+<li>
+SMS-кодты ешкімге айтпаңыз.
+</li>
+
+<li>
+Күмәнді сілтемеге кірмеңіз.
+</li>
+
+<li>
+«Шұғыл ақша керек» деген хабарламаны
+басқа арнамен тексеріңіз.
+</li>
+
+<li>
+Балаңызға «Тоқта — Тексер — Әрекет ет»
+қағидасын үйретіңіз.
+</li>
+
+</ol>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+function showSection(id){
+
+document.querySelectorAll('.section')
+.forEach(section=>{
+section.classList.remove('active');
+});
+
+document.getElementById(id)
+.classList.add('active');
+
+}
+
+
+function checkMessage(){
+
+let text =
+document.getElementById("message")
+.value
+.toLowerCase();
+
+let score=0;
+
+let reasons=[];
+
+
+if(
+text.includes("карта") ||
+text.includes("пароль") ||
+text.includes("код") ||
+text.includes("sms")
+){
+
+score++;
+
+reasons.push(
+"Жеке немесе қаржылық дерек сұралуы мүмкін."
+);
+
+}
+
+
+if(
+text.includes("сілтеме") ||
+text.includes("http")
+){
+
+score++;
+
+reasons.push(
+"Сілтемеге өтуге итермелейді."
+);
+
+}
+
+
+if(
+text.includes("шұғыл") ||
+text.includes("тез") ||
+text.includes("қазір") ||
+text.includes("бірден")
+){
+
+score++;
+
+reasons.push(
+"Асығыс әрекет жасауға итермелейді."
+);
+
+}
+
+
+if(
+text.includes("ұт") ||
+text.includes("сыйлық") ||
+text.includes("ақша")
+){
+
+score++;
+
+reasons.push(
+"Күтпеген қаржылық пайда уәде етеді."
+);
+
+}
+
+
+let result =
+document.getElementById("result");
+
+
+if(score>=3){
+
+result.className="result danger";
+
+result.innerHTML=
+
+"<h2>🔴 ЖОҒАРЫ ҚАУІП</h2>"+
+"<p>Күмәнді белгілер анықталды.</p>"+
+"<ul><li>"+
+reasons.join("</li><li>")+
+"</li></ul>"+
+"<b>Не істеу керек?</b>"+
+"<p>Сілтемеге өтпеңіз және жеке деректеріңізді енгізбеңіз. Ақпаратты ресми дереккөзден тексеріңіз.</p>";
+
+}
+
+
+else if(score>=1){
+
+result.className="result warning";
+
+result.innerHTML=
+
+"<h2>🟡 САҚ БОЛЫҢЫЗ</h2>"+
+"<p>Күмәнді белгілер бар.</p>"+
+"<ul><li>"+
+reasons.join("</li><li>")+
+"</li></ul>";
+
+}
+
+
+else{
+
+result.className="result safe";
+
+result.innerHTML=
+
+"<h2>🟢 АНЫҚ ҚАУІП БЕЛГІСІ ЖОҚ</h2>"+
+"<p>Дегенмен кез келген ақпаратты сенімді дереккөзден тексеру маңызды.</p>";
+
+}
+
+}
+
+</script>
+
+
+</body>
+  </html>
